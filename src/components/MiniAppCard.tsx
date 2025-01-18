@@ -1,4 +1,5 @@
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 interface MiniAppCardProps {
   name: string;
@@ -7,13 +8,32 @@ interface MiniAppCardProps {
   category: string;
 }
 
-export function MiniAppCard({ name, image }: MiniAppCardProps) {
+export function MiniAppCard({ name, description, image, category }: MiniAppCardProps) {
   return (
-    <div className="flex flex-col items-center">
-      <Card className="w-full aspect-square overflow-hidden rounded-2xl hover:opacity-90 transition-opacity">
-        <img src={image} alt={name} className="w-full h-full object-cover" />
-      </Card>
-      <span className="mt-2 text-sm font-medium text-center">{name}</span>
-    </div>
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
+      <CardContent className="p-0">
+        <div className="relative aspect-video overflow-hidden">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <div className="p-4">
+          <div className="flex items-start justify-between mb-2">
+            <h3 className="font-semibold text-lg">{name}</h3>
+            <Badge variant="secondary">{category}</Badge>
+          </div>
+          <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
+        </div>
+      </CardContent>
+      <CardFooter className="p-4 pt-0">
+        <Button className="w-full bg-telegram-primary hover:bg-telegram-secondary text-white">
+          View Details
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
+
+import { Button } from "./ui/button";
