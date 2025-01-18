@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-export function FeaturedSection() {
+interface FeaturedSectionProps {
+  onOpenApp: (app: any) => void;
+}
+
+export function FeaturedSection({ onOpenApp }: FeaturedSectionProps) {
   return (
     <section className="py-8">
       <div className="container px-4">
@@ -20,13 +24,33 @@ export function FeaturedSection() {
                 alt={app.name}
                 className="w-12 h-12 rounded-xl"
               />
-              <div className="flex-1">
-                <h3 className="font-semibold">{app.name}</h3>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold truncate">{app.name}</h3>
                 <p className="text-sm text-muted-foreground truncate">
                   {app.description}
                 </p>
               </div>
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => onOpenApp({
+                  name: app.name,
+                  description: app.description,
+                  image: app.icon,
+                  category: "Games",
+                  screenshots: [
+                    "https://placehold.co/400x800/3B82F6/ffffff",
+                    "https://placehold.co/400x800/10B981/ffffff",
+                    "https://placehold.co/400x800/6366F1/ffffff",
+                  ],
+                  details: {
+                    developer: "Example Dev",
+                    version: "1.0.0",
+                    size: "15 MB",
+                    lastUpdate: "2024-02-20",
+                  },
+                })}
+              >
                 OPEN
               </Button>
             </div>
@@ -62,13 +86,33 @@ export function FeaturedSection() {
                   alt={app.name}
                   className="w-12 h-12 rounded-xl"
                 />
-                <div className="flex-1">
-                  <h3 className="font-semibold">{app.name}</h3>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold truncate">{app.name}</h3>
                   <p className="text-sm text-muted-foreground truncate">
                     {app.description}
                   </p>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => onOpenApp({
+                    name: app.name,
+                    description: app.description,
+                    image: app.icon,
+                    category: "New",
+                    screenshots: [
+                      "https://placehold.co/400x800/F59E0B/ffffff",
+                      "https://placehold.co/400x800/EC4899/ffffff",
+                      "https://placehold.co/400x800/8B5CF6/ffffff",
+                    ],
+                    details: {
+                      developer: "Example Dev",
+                      version: "1.0.0",
+                      size: "15 MB",
+                      lastUpdate: "2024-02-20",
+                    },
+                  })}
+                >
                   OPEN
                 </Button>
               </div>

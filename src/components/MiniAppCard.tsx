@@ -31,22 +31,22 @@ export function MiniAppCard({
       <CardContent className="p-0">
         {/* Header Section */}
         <div className="p-4 flex items-start gap-4">
-          <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden flex-shrink-0">
             <img
               src={image}
               alt={name}
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between">
               <div>
-                <h2 className="text-2xl font-bold">{name}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold truncate">{name}</h2>
                 <Badge variant="secondary" className="mt-1">
                   {category}
                 </Badge>
               </div>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="ml-2">
                 <Share2 className="h-5 w-5" />
               </Button>
             </div>
@@ -57,12 +57,12 @@ export function MiniAppCard({
         </div>
 
         {/* Screenshots Section */}
-        <ScrollArea className="w-full whitespace-nowrap p-4">
-          <div className="flex space-x-4">
+        <ScrollArea className="w-full p-4">
+          <div className="flex gap-4">
             {screenshots.map((screenshot, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 rounded-lg overflow-hidden w-48 h-96 relative group"
+                className="flex-shrink-0 rounded-lg overflow-hidden w-36 h-72 sm:w-48 sm:h-96 relative group"
               >
                 <img
                   src={screenshot}
@@ -85,22 +85,22 @@ export function MiniAppCard({
           {/* App Details */}
           <div className="space-y-2">
             <h3 className="text-lg font-semibold">Information</h3>
-            <div className="grid grid-cols-2 gap-2 text-sm">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
               <div>
-                <span className="text-muted-foreground">Developer</span>
-                <p>{details.developer}</p>
+                <span className="text-muted-foreground block">Developer</span>
+                <p className="truncate">{details.developer}</p>
               </div>
               <div>
-                <span className="text-muted-foreground">Version</span>
-                <p>{details.version}</p>
+                <span className="text-muted-foreground block">Version</span>
+                <p className="truncate">{details.version}</p>
               </div>
               <div>
-                <span className="text-muted-foreground">Size</span>
-                <p>{details.size}</p>
+                <span className="text-muted-foreground block">Size</span>
+                <p className="truncate">{details.size}</p>
               </div>
               <div>
-                <span className="text-muted-foreground">Last Update</span>
-                <p>{details.lastUpdate}</p>
+                <span className="text-muted-foreground block">Last Update</span>
+                <p className="truncate">{details.lastUpdate}</p>
               </div>
             </div>
           </div>
