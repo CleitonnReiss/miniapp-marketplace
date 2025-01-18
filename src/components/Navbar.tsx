@@ -1,24 +1,24 @@
+import { ArrowLeft, MoreVertical, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export function Navbar() {
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b z-50">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-bold text-telegram-primary">TG MiniStore</h1>
-        </div>
-        <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost">Explore</Button>
-          <Button variant="ghost">Submit App</Button>
-          <Button className="bg-telegram-primary hover:bg-telegram-secondary">
-            Connect Wallet
-          </Button>
-        </div>
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu className="h-6 w-6" />
+    <nav className="fixed top-0 w-full bg-white/80 dark:bg-[#1A1F2C]/80 backdrop-blur-md z-50 px-4 h-14 flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        <Button variant="ghost" size="icon" className="dark:hover:bg-white/10">
+          <ArrowLeft className="h-5 w-5" />
         </Button>
+        <div className="flex items-center gap-1">
+          <h1 className="text-lg font-semibold">Telegram Apps Center</h1>
+          <Badge variant="secondary" className="bg-blue-500/10 text-blue-500">
+            <ChevronDown className="h-3 w-3" />
+          </Badge>
+        </div>
       </div>
+      <Button variant="ghost" size="icon" className="dark:hover:bg-white/10">
+        <MoreVertical className="h-5 w-5" />
+      </Button>
     </nav>
   );
 }
